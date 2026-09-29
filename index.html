@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f6f1" />
+    <meta name="description" content="Discover, save, and join the best events happening on campus." />
+    <title>Campusly — Your campus, in session</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="calendar.css" />
+    <link rel="stylesheet" href="clubs.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Campusly home"><span class="brand-mark">c.</span> campusly</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#events">Explore</a>
+        <a class="nav-link" href="#calendar">Calendar</a>
+        <a class="nav-link" href="#clubs">Clubs</a>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-button notification-button" aria-label="Notifications" title="Notifications"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span class="notification-dot"></span></button>
+        <button class="profile-button" aria-label="Your profile">JS</button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="welcome-band">
+        <div class="welcome-copy">
+          <span class="eyebrow"><span class="live-dot"></span> YOUR CAMPUS, IN SESSION</span>
+          <h1>Make room for<br /><em>something good.</em></h1>
+          <p>From late-night ideas to the big game. Find your people and show up.</p>
+          <a class="text-link" href="#events">Find your next thing <span aria-hidden="true">↘</span></a>
+        </div>
+        <div class="hero-art" aria-label="Students gathered outdoors on campus">
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=85" alt="College students talking together outdoors" />
+          <div class="hero-stamp"><span>GOOD<br />THINGS<br /><i>HAPPEN</i><br />HERE</span><span class="stamp-star">✳</span></div>
+          <div class="hero-caption"><span class="caption-dot"></span> THE QUAD · FALL SEMESTER</div>
+        </div>
+        <div class="hero-index">01 <span>/</span> 04</div>
+      </section>
+
+      <section class="events-section" id="events">
+        <div class="section-topline"><span>THE CAMPUS EDIT</span><span>GOOD PLANS, RIGHT THIS WAY <span aria-hidden="true">↘</span></span></div>
+        <div class="section-heading-row">
+          <div><h2>Happening <em>soon.</em></h2><p class="section-subtitle">A few things worth leaving your room for.</p></div>
+          <button class="create-button" id="create-event"><span aria-hidden="true">＋</span> Create event</button>
+        </div>
+
+        <div class="toolbar">
+          <div class="filters" role="group" aria-label="Filter events by category">
+            <button class="filter-chip selected" data-category="All">All events <span class="filter-count" id="event-count">06</span></button>
+            <button class="filter-chip" data-category="Arts">Arts & culture</button>
+            <button class="filter-chip" data-category="Social">Social</button>
+            <button class="filter-chip" data-category="Career">Career</button>
+            <button class="filter-chip" data-category="Sports">Sports</button>
+          </div>
+          <label class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4"/></svg><input type="search" id="search" placeholder="Find an event" aria-label="Search events" /></label>
+        </div>
+
+        <div class="event-grid" id="event-grid" aria-live="polite"></div>
+        <div class="empty-state" id="empty-state" hidden><span>✳</span><h3>No plans found. Yet.</h3><p>Try another search or category. Your next thing is out there.</p><button id="clear-filters">Clear filters</button></div>
+        <button class="load-more" id="show-saved"><span>♡</span> View your saved events <span aria-hidden="true">↗</span></button>
+      </section>
+
+      <section class="calendar-section" id="calendar">
+        <div class="calendar-heading">
+          <div><span class="eyebrow">MAKE A LITTLE ROOM</span><h2>Campus <em>calendar.</em></h2><p>All the good things, in one place.</p></div>
+          <div class="calendar-controls"><button id="calendar-prev" aria-label="Previous month">←</button><button id="calendar-today">Today</button><button id="calendar-next" aria-label="Next month">→</button></div>
+        </div>
+        <div class="calendar-month-label" id="calendar-month-label" aria-live="polite"></div>
+        <div class="calendar-grid" id="calendar-grid" aria-label="Monthly event calendar"></div>
+        <div class="calendar-day-events" id="calendar-day-events" aria-live="polite"></div>
+      </section>
+      <section class="clubs-section" id="clubs">
+        <div class="clubs-topline"><span>FIND YOUR PEOPLE</span><span>GOOD COMPANY, CLOSE BY <span aria-hidden="true">↘</span></span></div>
+        <div class="clubs-heading-row"><div><h2>There’s a club <em>for that.</em></h2><p>Shared interests make the best starting points.</p></div><span class="clubs-total" id="clubs-total"></span></div>
+        <div class="clubs-toolbar">
+          <div class="club-filters" role="group" aria-label="Filter clubs by category">
+            <button class="club-filter selected" data-club-category="All">All clubs</button>
+            <button class="club-filter" data-club-category="Arts">Arts</button>
+            <button class="club-filter" data-club-category="Academic">Academic</button>
+            <button class="club-filter" data-club-category="Social">Social</button>
+            <button class="club-filter" data-club-category="Service">Service</button>
+            <button class="club-filter" data-club-category="Sports">Sports</button>
+          </div>
+          <label class="club-search"><span aria-hidden="true">⌕</span><input id="club-search" type="search" placeholder="Find your kind of people" aria-label="Search clubs" /></label>
+        </div>
+        <div class="club-grid" id="club-grid" aria-live="polite"></div>
+        <div class="club-empty" id="club-empty" hidden><span>✳</span><h3>Not seeing your people?</h3><p>Try another category or search.</p><button id="clear-club-search">Clear filters</button></div>
+      </section>
+      <section class="campus-note" id="quote">
+        <span class="note-mark">c.</span><p>“I came for the free pizza.<br /><em>I stayed for the people.”</em></p><div><span class="note-rule"></span><span>— SOMEONE, PROBABLY</span></div>
+        <a href="#events" class="note-link" aria-label="Browse more events">↗</a>
+      </section>
+    </main>
+
+    <footer class="footer"><a class="brand footer-brand" href="#home"><span class="brand-mark">c.</span> campusly</a><span>MADE FOR THE IN-BETWEEN MOMENTS.</span><span>YOUR CAMPUS, YOUR CALL. © 2025</span></footer>
+
+    <dialog id="event-dialog" class="event-dialog">
+      <form method="dialog" id="event-form">
+        <div class="dialog-top"><span class="eyebrow">PUT SOMETHING ON THE CALENDAR</span><button class="icon-button close-dialog" aria-label="Close dialog">×</button></div>
+        <h2>Make a little <em>happening.</em></h2>
+        <label>Event name<input required name="title" maxlength="60" placeholder="e.g. Rooftop movie night" /></label>
+        <div class="form-row"><label>Category<select name="category"><option>Social</option><option>Arts</option><option>Career</option><option>Sports</option></select></label><label>Date<input required name="date" type="date" /></label></div>
+        <label>Where<input required name="location" maxlength="60" placeholder="e.g. The student union" /></label>
+        <label>Short description<input required name="description" maxlength="100" placeholder="What's the plan?" /></label>
+        <button class="submit-event" type="submit">Add to the lineup <span aria-hidden="true">↗</span></button>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
